@@ -5,30 +5,24 @@ on:
       - main
 jobs:
   build-and-deploy:
-    env:
-      REACT_APP_GITHUB_TOKEN: ${{ secrets.API_KEY }}
-      HELLO: Hello
     runs-on: ubuntu-latest
-    environment: github-pages
+    # environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Install and Build
         run: |
-          echo "3 : ${{ secrets.API_KEY }}"
-          echo "4 : ${{ secrets.PERSONAL_TOKEN }}"
-          echo "5 : ${{ env.HELLO }}"
-          echo "8 : ${{ env.github-pages }}"
-          echo "9 : ${{ env.github-pages.API_KEY }}"
-          echo "9 : ${{ env.REACT_APP_GITHUB_TOKEN }}"
+          echo "1 : ${{ env.REACT_APP_GITHUB_TOKEN }}"
+          echo "2 : ${{ secrets.API_KEY }}"
+        env:
+          REACT_APP_GITHUB_TOKEN: ${{ secrets.API_KEY }}
 
-#         run: |
-#           yarn install
-#           yarn run build --base=/github-api/
-
-#       - name: Deploy
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           personal_token: ${{ secrets.PERSONAL_TOKEN }}
-#           publish_dir: ./build
+        # run: |
+        #   yarn install
+        #   yarn run build --base=/github-api/
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     personal_token: ${{ secrets.PERSONAL_TOKEN }}
+      #     publish_dir: ./build
