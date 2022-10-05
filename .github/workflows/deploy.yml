@@ -7,20 +7,29 @@ jobs:
   build-and-deploy:
     env:
       REACT_APP_GITHUB_TOKEN: ${{ secrets.API_KEY }}
+      HELLO: Hello
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Install and Build
         run: |
-          echo "1 : ${{ env.REACT_APP_GITHUB_TOKEN }}"
-          echo "2 : ${{ secrets.API_KEY }}"
-          echo "3 : ${{ secrets.PERSONAL_TOKEN }}"
+          echo "1 : ${{ $REACT_APP_GITHUB_TOKEN }}"
+          echo "2 : ${{ $API_KEY }}"
+          echo "3 : ${{ secrets.API_KEY }}"
+          echo "4 : ${{ secrets.PERSONAL_TOKEN }}"
+          echo "5 : ${{ env.HELLO }}"
+          echo "6 : ${{ $HELLO }}"
+          echo "7 : ${{ github-pages }}"
+          echo "8 : ${{ env.github-pages }}"
+          echo "9 : ${{ env.github-pages.API_KEY }}"
+          echo "9 : ${{ env.REACT_APP_GITHUB_TOKEN }}"
+
 #         run: |
 #           yarn install
 #           yarn run build --base=/github-api/
-          
 
 #       - name: Deploy
 #         uses: peaceiris/actions-gh-pages@v3
