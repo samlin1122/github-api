@@ -16,8 +16,6 @@ jobs:
 
       - name: Install and Build
         run: |
-          echo "1 : ${{ $REACT_APP_GITHUB_TOKEN }}"
-          echo "2 : ${{ $API_KEY }}"
           echo "3 : ${{ secrets.API_KEY }}"
           echo "4 : ${{ secrets.PERSONAL_TOKEN }}"
           echo "5 : ${{ env.HELLO }}"
