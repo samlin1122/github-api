@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Authorization = `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`;
+const Authorization = `Bearer ${process.env.REACT_APP_GITHUB_TOKEN_A}${process.env.REACT_APP_GITHUB_TOKEN_B}`;
 
 let http = axios.create({
   baseURL: "https://api.github.com",

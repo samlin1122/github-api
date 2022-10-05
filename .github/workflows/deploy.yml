@@ -15,7 +15,8 @@ jobs:
           yarn install
           yarn run build --base=/github-api/
         env:
-          REACT_APP_GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          REACT_APP_GITHUB_TOKEN_A: ${{ secrets.API_TOKEN_A }}
+          REACT_APP_GITHUB_TOKEN_B: ${{ secrets.API_TOKEN_B }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
