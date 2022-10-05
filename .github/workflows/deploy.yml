@@ -11,14 +11,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        run: |
-          echo "${{ env }}"
-          echo "${{ secrets }}"
 
       - name: Install and Build
         run: |
           yarn install
           yarn run build --base=/github-api/
+          echo "${{ env }}"
+          echo "${{ secrets }}"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
