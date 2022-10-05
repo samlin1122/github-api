@@ -13,16 +13,13 @@ jobs:
 
       - name: Install and Build
         run: |
-          echo "1 : ${{ env.REACT_APP_GITHUB_TOKEN }}"
-          echo "2 : ${{ secrets.API_KEY }}"
+          yarn install
+          yarn run build --base=/github-api/
         env:
           REACT_APP_GITHUB_TOKEN: ${{ secrets.API_KEY }}
 
-        # run: |
-        #   yarn install
-        #   yarn run build --base=/github-api/
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     personal_token: ${{ secrets.PERSONAL_TOKEN }}
-      #     publish_dir: ./build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: ./build
