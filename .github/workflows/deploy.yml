@@ -5,17 +5,20 @@ on:
       - main
 jobs:
   build-and-deploy:
+    env:
+      REACT_APP_GITHUB_TOKEN: ${{ secrets.API_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        run: |
+          echo "${{ env }}"
+          echo "${{ secrets }}"
 
       - name: Install and Build
         run: |
           yarn install
           yarn run build --base=/github-api/
-        env:
-          REACT_APP_GITHUB_TOKEN: ${{ secrets.API_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
