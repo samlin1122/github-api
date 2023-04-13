@@ -1,0 +1,26 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install and Build
+        run: |
+          yarn install
+          yarn run build --base=/github-api/
+        env:
+          REACT_APP_API_TOKEN_A: ${{ secrets.API_TOKEN_A }}
+          REACT_APP_API_TOKEN_B: ${{ secrets.API_TOKEN_B }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: ./build

@@ -1,0 +1,46 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 16px;
+  margin: 0 auto;
+  background-color: #0d1117;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  &__search {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  &__repo {
+    width: 100%;
+    max-width: 1000px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 6px;
+    border-color: #30363d;
+  }
+  &__loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    filter: blur(2px);
+    opacity: 0.2;
+    & img {
+      height: 100px;
+    }
+  }
+  &__input {
+    width: 100%;
+    background-color: #0d1117;
+    color: white;
+    font-size: calc(10px + 2vmin);
+    margin-bottom: 20px;
+  }
+}
